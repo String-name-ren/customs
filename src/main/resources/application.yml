@@ -1,7 +1,7 @@
 server:
   port: 16800
   servlet:
-    context-path: /ectruckmg
+    context-path: /customs
 # profiles Config
 spring:
   application:
