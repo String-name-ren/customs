@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leader.ren.mapper.system.SysCoreMenuMapper">
+  <resultMap id="BaseResultMap" type="com.leader.ren.model.system.entity.MenuEntity" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="parent_id" property="parentId" jdbcType="BIGINT" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="href" property="href" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="order" property="order" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_by" property="createBy" jdbcType="BIGINT" />
+    <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="BIGINT" />
+    <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+     id, parent_id, code, `name`, `path`, href, icon, `order`, description, `status`,
+    create_by, create_at, update_by, update_at
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from sys_core_menu
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_core_menu
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.leader.ren.model.system.entity.MenuEntity" >
+    insert into sys_core_menu (id, parent_id, code,
+      name, path, href, icon,
+      `order`, description, status,
+      create_by, create_at, update_by,
+      update_at)
+    values (#{id,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR},
+      #{name,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, #{href,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR},
+      #{order,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+      #{createBy,jdbcType=BIGINT}, #{createAt,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=BIGINT},
+      #{updateAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.leader.ren.model.system.entity.MenuEntity" >
+    insert into sys_core_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+      <if test="href != null" >
+        href,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="order != null" >
+        `order`,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createAt != null" >
+        create_at,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateAt != null" >
+        update_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="href != null" >
+        #{href,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="order != null" >
+        #{order,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateAt != null" >
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leader.ren.model.system.entity.MenuEntity" >
+    update sys_core_menu
+    <set >
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="href != null" >
+        href = #{href,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="order != null" >
+        `order` = #{order,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createAt != null" >
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateAt != null" >
+        update_at = #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leader.ren.model.system.entity.MenuEntity" >
+    update sys_core_menu
+    set parent_id = #{parentId,jdbcType=BIGINT},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      href = #{href,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      `order` = #{order,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      create_by = #{createBy,jdbcType=BIGINT},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=BIGINT},
+      update_at = #{updateAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectSearchData" resultMap="BaseResultMap" >
+    <!--
+      WARNING - @mbggenerated
+      This element is automatically generated by MyBatis Generator, do not modify.
+      This element was generated on Mon May 07 15:46:38 CST 2018.
+    -->
+    select
+    <include refid="Base_Column_List" />
+    from sys_core_menu
+    where 1=1
+    <if test="params != null" >
+      <if test="params.filterText != null" >
+        and (code like '%${params.filterText}%'
+        or `name` like '%${params.filterText}%'
+        or `path` like '%${params.filterText}%'
+        or href like '%${params.filterText}%'
+        or icon like '%${params.filterText}%'
+        or description like '%${params.filterText}%'
+        )
+      </if>
+      <if test="params.parentId != null" >
+        and parent_id = #{params.parentId,jdbcType=VARCHAR}
+      </if>
+      <if test="params.code != null" >
+        and code like '%${params.code}%'
+      </if>
+      <if test="params.name != null" >
+        and `name` like '%${params.name}%'
+      </if>
+      <if test="params.path != null" >
+        and `path` like '%${params.path}%'
+      </if>
+      <if test="params.code != null" >
+        and href like '%${params.href}%'
+      </if>
+      <if test="params.icon != null" >
+        and icon like '%${params.icon}%'
+      </if>
+      <if test="params.description != null" >
+        and description like '%${params.description}%'
+      </if>
+      <if test="params.status != null" >
+        and `status` = #{params.status,jdbcType=INTEGER}
+      </if>
+    </if>
+    <if test="offset != null" >
+      limit #{offset} , #{limit}
+    </if>
+  </select>
+
+  <select id="selectSearchCount" resultType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+      This element is automatically generated by MyBatis Generator, do not modify.
+      This element was generated on Mon May 07 15:46:38 CST 2018.
+    -->
+    select count(1)
+    from sys_core_menu
+    where 1=1
+    <if test="params != null" >
+      <if test="params.filterText != null" >
+        and (code like '%${params.filterText}%'
+        or `name` like '%${params.filterText}%'
+        or `path` like '%${params.filterText}%'
+        or href like '%${params.filterText}%'
+        or icon like '%${params.filterText}%'
+        or description like '%${params.filterText}%'
+        )
+      </if>
+      <if test="params.parentId != null" >
+        and parent_id = #{params.parentId,jdbcType=VARCHAR}
+      </if>
+      <if test="params.code != null" >
+        and code like '%${params.code}%'
+      </if>
+      <if test="params.name != null" >
+        and `name` like '%${params.name}%'
+      </if>
+      <if test="params.path != null" >
+        and `path` like '%${params.path}%'
+      </if>
+      <if test="params.code != null" >
+        and href like '%${params.href}%'
+      </if>
+      <if test="params.icon != null" >
+        and icon like '%${params.icon}%'
+      </if>
+      <if test="params.description != null" >
+        and description like '%${params.description}%'
+      </if>
+      <if test="params.status != null" >
+        and `status` = #{params.status,jdbcType=INTEGER}
+      </if>
+    </if>
+  </select>
+
+  <select id="selectDataBySelective" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from sys_core_menu
+    <where>
+      <if test="entity != null" >
+        <if test="entity.parentId != null" >
+          and parent_id = #{entity.parentId,jdbcType=VARCHAR}
+        </if>
+        <if test="entity.code != null" >
+          and code = #{entity.code,jdbcType=VARCHAR}
+        </if>
+        <if test="entity.name != null" >
+          and `name` = #{entity.name,jdbcType=VARCHAR}
+        </if>
+        <if test="entity.path != null" >
+          and `path` = #{entity.path,jdbcType=VARCHAR}
+        </if>
+        <if test="entity.href != null" >
+          and href = #{entity.href,jdbcType=VARCHAR}
+        </if>
+        <if test="entity.icon != null" >
+          and icon = #{entity.icon,jdbcType=VARCHAR}
+        </if>
+        <if test="entity.status != null" >
+          and `status` = #{entity.status,jdbcType=INTEGER}
+        </if>
+      </if>
+    </where>
+  </select>
+
+  <select id="selectByIds" resultMap="BaseResultMap">
+    select
+    menu.*
+    from sys_core_menu menu
+    where menu.id in
+    <foreach collection="menus" item="item" index="index" open="(" close=")" separator=",">
+      #{item}
+    </foreach>
+  </select>
+
+  <select id="selectByRoleIds" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select
+    distinct menu.*
+    from sys_core_relation link
+    join sys_core_menu menu on menu.id = link.resource_id and menu.status = '1'
+    where  link.resource_type = 'menu'
+    <if test="roleIds!=null and roleIds.size>0">
+      and link.role_id in
+      <foreach collection="roleIds" item="roleId" index="index" open="(" close=")" separator=",">
+        #{roleId}
+      </foreach>
+    </if>
+  </select>
+
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select
+    distinct menu.*
+    from sys_core_relation link
+    join sys_core_menu menu on menu.id = link.resource_id and menu.status = '1'
+    where link.resource_type = 'menu'
+    <if test="params.userid!=null">
+      and link.role_id = #{params.userid,jdbcType=BIGINT}
+    </if>
+  </select>
+
+  <select id="selectLinkedMenuByRoleId" resultMap="BaseResultMap">
+    select
+    distinct menu.*
+    from sys_core_relation link
+    join sys_core_menu menu on menu.id = link.resource_id
+    join sys_core_role role on role.id = link.role_id
+    where link.role_id = #{roleId,jdbcType=BIGINT}
+    and link.resource_type = 'menu'
+  </select>
+
+  <select id="selectUnlinkMenuByRoleIdAndType" resultMap="BaseResultMap">
+    select
+    menu.*
+    from sys_core_menu menu
+    where
+   menu.id not in (
+    select
+    menuin.id
+    from sys_core_relation link
+    join sys_core_menu menuin on menuin.id = link.resource_id
+    join sys_core_role role on role.id = link.role_id
+    where link.role_id = #{roleId,jdbcType=BIGINT}
+    and link.resource_type = 'menu'
+    )
+  </select>
+</mapper>

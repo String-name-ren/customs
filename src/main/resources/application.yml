@@ -1,0 +1,30 @@
+server:
+  port: 16800
+  servlet:
+    context-path: /ectruckmg
+# profiles Config
+spring:
+  application:
+    name: ren-service
+  # dev:开发配置、test:测试配置、prod: 发布配置;
+  profiles:
+    active: ${config.active:dev}
+  jackson:
+    time-zone: GMT+8
+
+
+mybatis:
+  mapper-locations: classpath*:mybatis/**/*.xml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+weChat:
+  appid: "wxdef99ac87f9050b7"
+  secret: "046e744f81477e7777cf47de736ea9d9"

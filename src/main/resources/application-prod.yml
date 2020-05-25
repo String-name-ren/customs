@@ -1,0 +1,172 @@
+# DataSource Config
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  # 数据库配置
+  datasource:
+    # ---------------基本链接信息---------------------------
+    url: jdbc:mysql://127.0.0.1:3306/truckmanage-prod?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+    # -----------------初始化大小，最小，最大----------------------------
+    initialSize: 16
+    minIdle: 16
+    maxActive: 64
+    #是否在自动回收超时连接的时候打印连接的超时错误
+    logAbandoned: true
+    #是否自动回收超时连接
+    removeAbandoned: true
+    #超时时间(以秒数为单位)
+    removeAbandonedTimeout: 60
+    # 配置获取连接等待超时的时间(以毫秒为单位)
+    maxWait: 1000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 6000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: SELECT 'OK'
+    testWhileIdle: true
+    testOnBorrow: false
+    test-on-Return: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    # connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=3000
+    # 合并多个DruidDataSource的监控数据
+    # useGlobalDataSourceStat: true
+  # 缓存配置
+  redis:
+    # 地址
+    host: 127.0.0.1
+    # 连接端口
+    port: 6379
+    # 数据库索引（默认为0）
+    database: 11
+    # 连接密码（默认为空）
+    password:
+    # 连接超时时间（毫秒）
+    timeout: 2000
+    # 连接池配置
+    lettuce:
+      pool:
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: 8
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1
+        # 连接池中的最大空闲连接
+        max-idle: 8
+        # 连接池中的最小空闲连接
+        min-idle: 0
+
+
+
+# Logger Config
+logging:
+  level:
+    com.leader.ren: debug
+
+
+#登录URL
+login.page.uri:
+
+# 系统安全相关配置
+sys:
+  security:
+    # 混淆密令
+    salt: d+F/imDqF4mI9IFu3cblY9zk1fjS8luGEuPzDv/16og=
+    # 解密公钥
+    publicKey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDEq/1GKhKQp0Wng7sHswXjZgUgn6kK6C3kiTFzcLgGQBh0YOoIXyDssy+tbGUPjiCluFxK3iCPZYD1HfR7rAmITHFLgbTp/By+hHm+T8qDc8KpWEc135vNuWky8jr5YZZR0LF2gAUJNAH4RnwgY0muBbPKsDVsp3lGuQsFL68pJwIDAQAB
+    # 加密私钥
+    privateKey: MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAMSr/UYqEpCnRaeDuwezBeNmBSCfqQroLeSJMXNwuAZAGHRg6ghfIOyzL61sZQ+OIKW4XEreII9lgPUd9HusCYhMcUuBtOn8HL6Eeb5PyoNzwqlYRzXfm825aTLyOvlhllHQsXaABQk0AfhGfCBjSa4Fs8qwNWyneUa5CwUvryknAgMBAAECgYAyZo0KnR+S2HseOcEFcRhyNSPdP21XsTaJmasFlX5jg6uAr5FqQc6zOhxeyid//AFb1so4GYKonO+WYW3U/7qVM09oyU8xrVR6ZbOf2wMUx2i0QbcUc7kvQASuVIyNkp9+vYtNAKFTMg5LEUCRUQbLq6k9Guezo4Clj81ckWn2+QJBAOX04IGAy3jQK6mawztTGTTzs3/SUQGMOpYtPNGTUZ6AFaRImSJlxao8FnM3K/AOLyeqFi4Mqzm7JX04r3LlUHsCQQDa8hbxJOhBoamEnNWiZD4zsG83WiQBYjCyl5wtYmAuEugYMoBLlckagnJksItAbVAoLfC+wGlWoWlmlBAog+hFAkEAuonhkMwUwoVD1gqYMsifGwhR5O+MDNBfOjGqM2vo+sV2SNUne/LI3OZvY7kuqEYpVGiyI1rdjzBUIfdYw8BnfwJAHlB6oLTNe5jYkcXtRmi+vAVnwLA4YACqYW/gbeA7FOYFQKRtYwnAKG17TTmsbiU0ffuuY5rceuQqZcuGWTW6SQJAe0p5PoEcGL47Ws4FXeh1G2ERrkuj3uDWK0qpcpmL/bd9TrDsD5ueYswa7iCUfaB4WjKeCb00Z55Z+izfhVLOIQ==
+
+jwt:
+  # 用户令牌设定
+  user:
+    # 令牌头部
+    token-header: token
+    # 过期时间(单位:秒,时长:30天)
+    token-expire: 2592000
+    # 令牌密钥
+    token-secret: 0X0WEC-USER0X0
+
+  # 应用令牌设定
+  apps:
+    # 默认访问令牌过期时间(单位:秒,时长:10天)
+    access-token-expire: 864000
+    # 重新生成访问令牌前置时间(单位:秒,时长:1小时)
+    access-before-expire: 3600
+    # 默认刷新令牌过期时间(单位:秒,时长:90天)
+    refresh-token-expire: 7776000
+    # 默认刷新令牌每天次数
+    refresh-token-limits: 20
+    # 重新生成刷新令牌前置时间(单位:秒,时长:1小时)
+    refresh-before-expire: 3600
+
+
+
+
+# ===========================================================================================
+##是否引入验证码
+kaptcha.enable: true
+##是否有边框(yes,no)
+kaptcha.border.enabled: yes
+##边框颜色
+kaptcha.border.color: black
+##边框粗细度
+kaptcha.border.thickness: 1
+##验证码生成器
+kaptcha.producer.impl: com.leader.ren.component.config.kaptcha.MyProducer
+##验证码文本生成器
+kaptcha.textproducer.impl: com.google.code.kaptcha.text.impl.DefaultTextCreator
+##验证码文本字符内容范围
+kaptcha.textproducer.char.string: 23456789
+##验证码文本字符长度
+kaptcha.textproducer.char.length: 4
+##验证码文本字体样式(Arial,Courier)
+kaptcha.textproducer.font.names: Arial
+##验证码文本字符大小
+kaptcha.textproducer.font.size: 60
+##验证码文本字符颜色
+kaptcha.textproducer.font.color: black
+##验证码文本字符间距
+kaptcha.textproducer.char.space: 10
+##验证码噪点生成对象
+kaptcha.noise.impl: com.leader.ren.component.config.kaptcha.MyNoise
+##验证码噪点颜色
+kaptcha.noise.color: 0,0,0
+##渲染效果：水纹：WaterRipple；鱼眼：FishEyeGimpy；阴影：ShadowGimpy
+kaptcha.obscurificator.impl: com.google.code.kaptcha.impl.WaterRipple
+##验证码文本字符渲染
+kaptcha.wordrenderer.impl: com.leader.ren.component.config.kaptcha.MyWordRenderer
+##验证码背景生成器
+kaptcha.background.impl: com.google.code.kaptcha.impl.DefaultBackground
+##验证码背景颜色渐进
+kaptcha.background.clear.from: lightGray
+##验证码背景颜色渐进
+kaptcha.background.clear.to: white
+##验证码图片宽度
+kaptcha.image.width: 200
+##验证码图片高度
+kaptcha.image.height: 80
+
+
+
+# 缓存设定
+cache.enable: true
+
+
+
+###################ftp服务器配置######################
+ftp.host: ftp.pactl.com
+ftp.port: 21
+
+ftp.cargoNo.username: bzt01
+ftp.cargoNo.password: bzt01.com
+ftp.cargoNo.bakDir: /myapp/bak/cargo
+
+ftp.cba.username: bzt03
+ftp.cba.password: bzt03.com
+ftp.cba.bakDir: /myapp/bak/cba
