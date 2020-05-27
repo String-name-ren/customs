@@ -5,7 +5,7 @@ spring:
   # 数据库配置
   datasource:
     # ---------------基本链接信息---------------------------
-    url: jdbc:mysql://47.98.148.125:3306/truckmanage?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://47.98.148.125:3306/customs?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
     password: woshiwang123abc
     # -----------------初始化大小，最小，最大----------------------------
