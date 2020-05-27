@@ -64,8 +64,8 @@ public class BigScreenController {
         name.add("手机");
         name.add("ipad");
         name.add("电脑");
-        value.add("1000");
-        value.add("2000");
+        value.add("100");
+        value.add("200");
         value.add("180");
 
         result.put("name",name);
