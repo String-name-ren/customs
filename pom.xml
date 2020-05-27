@@ -192,7 +192,7 @@
     </dependencies>
 
     <build>
-        <finalName>ectruckmg</finalName>
+        <finalName>customs</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
