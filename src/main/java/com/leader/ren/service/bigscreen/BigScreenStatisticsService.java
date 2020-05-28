@@ -38,6 +38,8 @@ public class BigScreenStatisticsService {
         List<String> bottom31 = new ArrayList<>();
         List<String> bottom32 = new ArrayList<>();
 
+        List<String> bottom4 = new ArrayList<>();
+
         if(CommUtils.isNotNull(list)){
             for(BigScreenStatistics statistics : list){
                 title.add(statistics.getMonth());
@@ -46,8 +48,9 @@ public class BigScreenStatisticsService {
                 data3.add(statistics.getCargoValueIn());
                 left2.add(statistics.getTax());
                 bottom2.add(statistics.getPeopleTotal());
-                bottom31.add(statistics.getExpressIn());
-                bottom32.add(statistics.getExpressOut());
+                bottom31.add(statistics.getPlaneInTotal());
+                bottom32.add(statistics.getPlaneOutTotal());
+                bottom4.add(statistics.getExpressIn());
             }
         }
 
@@ -64,6 +67,8 @@ public class BigScreenStatisticsService {
         //底三显示
         result.put("bottom31",bottom31);
         result.put("bottom32",bottom32);
+        //底四显示
+        result.put("bottom4",bottom4);
         return RestVo.SUCCESS(result);
     }
 

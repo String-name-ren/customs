@@ -3,6 +3,7 @@ package com.leader.ren.controller.bigscreen;
 import com.leader.ren.common.dto.RestVo;
 import com.leader.ren.model.bigscreen.LineVo;
 import com.leader.ren.service.bigscreen.BigScreenStatisticsService;
+import com.leader.ren.service.bigscreen.BusinessDataService;
 import com.leader.ren.service.bigscreen.CustomsClearanceTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,34 +25,23 @@ public class BigScreenController {
     @Autowired
     private CustomsClearanceTimeService customsClearanceTimeService;
 
+    @Autowired
+    private BusinessDataService businessDataService;
+
     @PostMapping("getLeft1")
     public RestVo getLeft1(){
         return importExportStatisticsService.getImportExportStatistics();
     }
 
-
-    @PostMapping("getLeft2")
-    public RestVo getLeft2(){
-        Map<String,Object> result = new HashMap<>();
-        List<String> name = new ArrayList<>();
-        List<String> value = new ArrayList<>();
-
-        name.add("手机");
-        name.add("ipad");
-        name.add("电脑");
-        value.add("100");
-        value.add("200");
-        value.add("180");
-
-        result.put("name",name);
-        result.put("value",value);
-        return RestVo.SUCCESS(result);
-    }
-
-
     @PostMapping("getBottom1")
     public RestVo getBottom1(){
         return customsClearanceTimeService.getClearanceTime();
+    }
+
+    @PostMapping("getRight2")
+    public RestVo getRight2(){
+
+        return businessDataService.getBusinessData();
     }
 
     @PostMapping("getBottom2")
