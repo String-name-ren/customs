@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.leader.ren.mapper.bigscreen.BigScreenStatisticsMapper" >
+  <resultMap id="BaseResultMap" type="com.leader.ren.model.bigscreen.entity.BigScreenStatistics" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="month" property="month" jdbcType="VARCHAR" />
+    <result column="bill_count_in" property="billCountIn" jdbcType="VARCHAR" />
+    <result column="bill_count_out" property="billCountOut" jdbcType="VARCHAR" />
+    <result column="bill_count_total" property="billCountTotal" jdbcType="VARCHAR" />
+    <result column="cargo_value_in" property="cargoValueIn" jdbcType="VARCHAR" />
+    <result column="cargo_value_out" property="cargoValueOut" jdbcType="VARCHAR" />
+    <result column="cargo_value_total" property="cargoValueTotal" jdbcType="VARCHAR" />
+    <result column="cargo_count" property="cargoCount" jdbcType="VARCHAR" />
+    <result column="tax" property="tax" jdbcType="VARCHAR" />
+    <result column="people_in" property="peopleIn" jdbcType="VARCHAR" />
+    <result column="people_out" property="peopleOut" jdbcType="VARCHAR" />
+    <result column="people_total" property="peopleTotal" jdbcType="VARCHAR" />
+    <result column="plane_bus_in" property="planeBusIn" jdbcType="VARCHAR" />
+    <result column="plane_cargo_in" property="planeCargoIn" jdbcType="VARCHAR" />
+    <result column="plane_in_total" property="planeInTotal" jdbcType="VARCHAR" />
+    <result column="plane_bus_out" property="planeBusOut" jdbcType="VARCHAR" />
+    <result column="plane_cargo_out" property="planeCargoOut" jdbcType="VARCHAR" />
+    <result column="plane_out_total" property="planeOutTotal" jdbcType="VARCHAR" />
+    <result column="plane_total" property="planeTotal" jdbcType="VARCHAR" />
+    <result column="express_in" property="expressIn" jdbcType="VARCHAR" />
+    <result column="express_out" property="expressOut" jdbcType="VARCHAR" />
+    <result column="express_total" property="expressTotal" jdbcType="VARCHAR" />
+    <result column="clue_trade" property="clueTrade" jdbcType="VARCHAR" />
+    <result column="clue_non_trade" property="clueNonTrade" jdbcType="VARCHAR" />
+    <result column="clue_total" property="clueTotal" jdbcType="VARCHAR" />
+    <result column="business_car" property="businessCar" jdbcType="VARCHAR" />
+    <result column="business_show" property="businessShow" jdbcType="VARCHAR" />
+    <result column="business_finance_lease" property="businessFinanceLease" jdbcType="VARCHAR" />
+    <result column="business_electricity" property="businessElectricity" jdbcType="VARCHAR" />
+    <result column="business_total" property="businessTotal" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, month, bill_count_in, bill_count_out, bill_count_total, cargo_value_in, cargo_value_out, 
+    cargo_value_total, cargo_count, tax, people_in, people_out, people_total, plane_bus_in, 
+    plane_cargo_in, plane_in_total, plane_bus_out, plane_cargo_out, plane_out_total, 
+    plane_total, express_in, express_out, express_total, clue_trade, clue_non_trade, 
+    clue_total, business_car, business_show, business_finance_lease, business_electricity, 
+    business_total
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from big_screen_statistics
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from big_screen_statistics
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.leader.ren.model.bigscreen.entity.BigScreenStatistics" >
+    insert into big_screen_statistics (id, month, bill_count_in, 
+      bill_count_out, bill_count_total, cargo_value_in, 
+      cargo_value_out, cargo_value_total, cargo_count, 
+      tax, people_in, people_out, 
+      people_total, plane_bus_in, plane_cargo_in, 
+      plane_in_total, plane_bus_out, plane_cargo_out, 
+      plane_out_total, plane_total, express_in, 
+      express_out, express_total, clue_trade, 
+      clue_non_trade, clue_total, business_car, 
+      business_show, business_finance_lease, business_electricity, 
+      business_total)
+    values (#{id,jdbcType=BIGINT}, #{month,jdbcType=VARCHAR}, #{billCountIn,jdbcType=VARCHAR}, 
+      #{billCountOut,jdbcType=VARCHAR}, #{billCountTotal,jdbcType=VARCHAR}, #{cargoValueIn,jdbcType=VARCHAR}, 
+      #{cargoValueOut,jdbcType=VARCHAR}, #{cargoValueTotal,jdbcType=VARCHAR}, #{cargoCount,jdbcType=VARCHAR}, 
+      #{tax,jdbcType=VARCHAR}, #{peopleIn,jdbcType=VARCHAR}, #{peopleOut,jdbcType=VARCHAR}, 
+      #{peopleTotal,jdbcType=VARCHAR}, #{planeBusIn,jdbcType=VARCHAR}, #{planeCargoIn,jdbcType=VARCHAR}, 
+      #{planeInTotal,jdbcType=VARCHAR}, #{planeBusOut,jdbcType=VARCHAR}, #{planeCargoOut,jdbcType=VARCHAR}, 
+      #{planeOutTotal,jdbcType=VARCHAR}, #{planeTotal,jdbcType=VARCHAR}, #{expressIn,jdbcType=VARCHAR}, 
+      #{expressOut,jdbcType=VARCHAR}, #{expressTotal,jdbcType=VARCHAR}, #{clueTrade,jdbcType=VARCHAR}, 
+      #{clueNonTrade,jdbcType=VARCHAR}, #{clueTotal,jdbcType=VARCHAR}, #{businessCar,jdbcType=VARCHAR}, 
+      #{businessShow,jdbcType=VARCHAR}, #{businessFinanceLease,jdbcType=VARCHAR}, #{businessElectricity,jdbcType=VARCHAR}, 
+      #{businessTotal,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.leader.ren.model.bigscreen.entity.BigScreenStatistics" >
+    insert into big_screen_statistics
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="month != null" >
+        month,
+      </if>
+      <if test="billCountIn != null" >
+        bill_count_in,
+      </if>
+      <if test="billCountOut != null" >
+        bill_count_out,
+      </if>
+      <if test="billCountTotal != null" >
+        bill_count_total,
+      </if>
+      <if test="cargoValueIn != null" >
+        cargo_value_in,
+      </if>
+      <if test="cargoValueOut != null" >
+        cargo_value_out,
+      </if>
+      <if test="cargoValueTotal != null" >
+        cargo_value_total,
+      </if>
+      <if test="cargoCount != null" >
+        cargo_count,
+      </if>
+      <if test="tax != null" >
+        tax,
+      </if>
+      <if test="peopleIn != null" >
+        people_in,
+      </if>
+      <if test="peopleOut != null" >
+        people_out,
+      </if>
+      <if test="peopleTotal != null" >
+        people_total,
+      </if>
+      <if test="planeBusIn != null" >
+        plane_bus_in,
+      </if>
+      <if test="planeCargoIn != null" >
+        plane_cargo_in,
+      </if>
+      <if test="planeInTotal != null" >
+        plane_in_total,
+      </if>
+      <if test="planeBusOut != null" >
+        plane_bus_out,
+      </if>
+      <if test="planeCargoOut != null" >
+        plane_cargo_out,
+      </if>
+      <if test="planeOutTotal != null" >
+        plane_out_total,
+      </if>
+      <if test="planeTotal != null" >
+        plane_total,
+      </if>
+      <if test="expressIn != null" >
+        express_in,
+      </if>
+      <if test="expressOut != null" >
+        express_out,
+      </if>
+      <if test="expressTotal != null" >
+        express_total,
+      </if>
+      <if test="clueTrade != null" >
+        clue_trade,
+      </if>
+      <if test="clueNonTrade != null" >
+        clue_non_trade,
+      </if>
+      <if test="clueTotal != null" >
+        clue_total,
+      </if>
+      <if test="businessCar != null" >
+        business_car,
+      </if>
+      <if test="businessShow != null" >
+        business_show,
+      </if>
+      <if test="businessFinanceLease != null" >
+        business_finance_lease,
+      </if>
+      <if test="businessElectricity != null" >
+        business_electricity,
+      </if>
+      <if test="businessTotal != null" >
+        business_total,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="month != null" >
+        #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="billCountIn != null" >
+        #{billCountIn,jdbcType=VARCHAR},
+      </if>
+      <if test="billCountOut != null" >
+        #{billCountOut,jdbcType=VARCHAR},
+      </if>
+      <if test="billCountTotal != null" >
+        #{billCountTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoValueIn != null" >
+        #{cargoValueIn,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoValueOut != null" >
+        #{cargoValueOut,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoValueTotal != null" >
+        #{cargoValueTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoCount != null" >
+        #{cargoCount,jdbcType=VARCHAR},
+      </if>
+      <if test="tax != null" >
+        #{tax,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleIn != null" >
+        #{peopleIn,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleOut != null" >
+        #{peopleOut,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleTotal != null" >
+        #{peopleTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="planeBusIn != null" >
+        #{planeBusIn,jdbcType=VARCHAR},
+      </if>
+      <if test="planeCargoIn != null" >
+        #{planeCargoIn,jdbcType=VARCHAR},
+      </if>
+      <if test="planeInTotal != null" >
+        #{planeInTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="planeBusOut != null" >
+        #{planeBusOut,jdbcType=VARCHAR},
+      </if>
+      <if test="planeCargoOut != null" >
+        #{planeCargoOut,jdbcType=VARCHAR},
+      </if>
+      <if test="planeOutTotal != null" >
+        #{planeOutTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="planeTotal != null" >
+        #{planeTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="expressIn != null" >
+        #{expressIn,jdbcType=VARCHAR},
+      </if>
+      <if test="expressOut != null" >
+        #{expressOut,jdbcType=VARCHAR},
+      </if>
+      <if test="expressTotal != null" >
+        #{expressTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="clueTrade != null" >
+        #{clueTrade,jdbcType=VARCHAR},
+      </if>
+      <if test="clueNonTrade != null" >
+        #{clueNonTrade,jdbcType=VARCHAR},
+      </if>
+      <if test="clueTotal != null" >
+        #{clueTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCar != null" >
+        #{businessCar,jdbcType=VARCHAR},
+      </if>
+      <if test="businessShow != null" >
+        #{businessShow,jdbcType=VARCHAR},
+      </if>
+      <if test="businessFinanceLease != null" >
+        #{businessFinanceLease,jdbcType=VARCHAR},
+      </if>
+      <if test="businessElectricity != null" >
+        #{businessElectricity,jdbcType=VARCHAR},
+      </if>
+      <if test="businessTotal != null" >
+        #{businessTotal,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leader.ren.model.bigscreen.entity.BigScreenStatistics" >
+    update big_screen_statistics
+    <set >
+      <if test="month != null" >
+        month = #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="billCountIn != null" >
+        bill_count_in = #{billCountIn,jdbcType=VARCHAR},
+      </if>
+      <if test="billCountOut != null" >
+        bill_count_out = #{billCountOut,jdbcType=VARCHAR},
+      </if>
+      <if test="billCountTotal != null" >
+        bill_count_total = #{billCountTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoValueIn != null" >
+        cargo_value_in = #{cargoValueIn,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoValueOut != null" >
+        cargo_value_out = #{cargoValueOut,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoValueTotal != null" >
+        cargo_value_total = #{cargoValueTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoCount != null" >
+        cargo_count = #{cargoCount,jdbcType=VARCHAR},
+      </if>
+      <if test="tax != null" >
+        tax = #{tax,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleIn != null" >
+        people_in = #{peopleIn,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleOut != null" >
+        people_out = #{peopleOut,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleTotal != null" >
+        people_total = #{peopleTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="planeBusIn != null" >
+        plane_bus_in = #{planeBusIn,jdbcType=VARCHAR},
+      </if>
+      <if test="planeCargoIn != null" >
+        plane_cargo_in = #{planeCargoIn,jdbcType=VARCHAR},
+      </if>
+      <if test="planeInTotal != null" >
+        plane_in_total = #{planeInTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="planeBusOut != null" >
+        plane_bus_out = #{planeBusOut,jdbcType=VARCHAR},
+      </if>
+      <if test="planeCargoOut != null" >
+        plane_cargo_out = #{planeCargoOut,jdbcType=VARCHAR},
+      </if>
+      <if test="planeOutTotal != null" >
+        plane_out_total = #{planeOutTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="planeTotal != null" >
+        plane_total = #{planeTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="expressIn != null" >
+        express_in = #{expressIn,jdbcType=VARCHAR},
+      </if>
+      <if test="expressOut != null" >
+        express_out = #{expressOut,jdbcType=VARCHAR},
+      </if>
+      <if test="expressTotal != null" >
+        express_total = #{expressTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="clueTrade != null" >
+        clue_trade = #{clueTrade,jdbcType=VARCHAR},
+      </if>
+      <if test="clueNonTrade != null" >
+        clue_non_trade = #{clueNonTrade,jdbcType=VARCHAR},
+      </if>
+      <if test="clueTotal != null" >
+        clue_total = #{clueTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCar != null" >
+        business_car = #{businessCar,jdbcType=VARCHAR},
+      </if>
+      <if test="businessShow != null" >
+        business_show = #{businessShow,jdbcType=VARCHAR},
+      </if>
+      <if test="businessFinanceLease != null" >
+        business_finance_lease = #{businessFinanceLease,jdbcType=VARCHAR},
+      </if>
+      <if test="businessElectricity != null" >
+        business_electricity = #{businessElectricity,jdbcType=VARCHAR},
+      </if>
+      <if test="businessTotal != null" >
+        business_total = #{businessTotal,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leader.ren.model.bigscreen.entity.BigScreenStatistics" >
+    update big_screen_statistics
+    set month = #{month,jdbcType=VARCHAR},
+      bill_count_in = #{billCountIn,jdbcType=VARCHAR},
+      bill_count_out = #{billCountOut,jdbcType=VARCHAR},
+      bill_count_total = #{billCountTotal,jdbcType=VARCHAR},
+      cargo_value_in = #{cargoValueIn,jdbcType=VARCHAR},
+      cargo_value_out = #{cargoValueOut,jdbcType=VARCHAR},
+      cargo_value_total = #{cargoValueTotal,jdbcType=VARCHAR},
+      cargo_count = #{cargoCount,jdbcType=VARCHAR},
+      tax = #{tax,jdbcType=VARCHAR},
+      people_in = #{peopleIn,jdbcType=VARCHAR},
+      people_out = #{peopleOut,jdbcType=VARCHAR},
+      people_total = #{peopleTotal,jdbcType=VARCHAR},
+      plane_bus_in = #{planeBusIn,jdbcType=VARCHAR},
+      plane_cargo_in = #{planeCargoIn,jdbcType=VARCHAR},
+      plane_in_total = #{planeInTotal,jdbcType=VARCHAR},
+      plane_bus_out = #{planeBusOut,jdbcType=VARCHAR},
+      plane_cargo_out = #{planeCargoOut,jdbcType=VARCHAR},
+      plane_out_total = #{planeOutTotal,jdbcType=VARCHAR},
+      plane_total = #{planeTotal,jdbcType=VARCHAR},
+      express_in = #{expressIn,jdbcType=VARCHAR},
+      express_out = #{expressOut,jdbcType=VARCHAR},
+      express_total = #{expressTotal,jdbcType=VARCHAR},
+      clue_trade = #{clueTrade,jdbcType=VARCHAR},
+      clue_non_trade = #{clueNonTrade,jdbcType=VARCHAR},
+      clue_total = #{clueTotal,jdbcType=VARCHAR},
+      business_car = #{businessCar,jdbcType=VARCHAR},
+      business_show = #{businessShow,jdbcType=VARCHAR},
+      business_finance_lease = #{businessFinanceLease,jdbcType=VARCHAR},
+      business_electricity = #{businessElectricity,jdbcType=VARCHAR},
+      business_total = #{businessTotal,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="getStatistics" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from big_screen_statistics
+    order by id asc
+  </select>
+
+</mapper>
