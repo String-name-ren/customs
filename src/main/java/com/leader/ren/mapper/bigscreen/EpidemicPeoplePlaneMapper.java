@@ -3,6 +3,8 @@ package com.leader.ren.mapper.bigscreen;
 import com.leader.ren.model.bigscreen.entity.EpidemicPeoplePlane;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface EpidemicPeoplePlaneMapper {
     int deleteByPrimaryKey(Long id);
@@ -16,4 +18,6 @@ public interface EpidemicPeoplePlaneMapper {
     int updateByPrimaryKeySelective(EpidemicPeoplePlane record);
 
     int updateByPrimaryKey(EpidemicPeoplePlane record);
+
+    List<EpidemicPeoplePlane> getPeoplePlaneData();
 }

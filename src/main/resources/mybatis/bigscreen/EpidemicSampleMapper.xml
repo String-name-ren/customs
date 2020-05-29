@@ -90,4 +90,12 @@
       sample_rate = #{sampleRate,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="getSampleData" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from epidemic_sample
+    order by id asc
+  </select>
+
 </mapper>

@@ -103,4 +103,12 @@
       plane_out = #{planeOut,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="getPeoplePlaneData" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from epidemic_people_plane
+    order by id asc
+  </select>
+
 </mapper>

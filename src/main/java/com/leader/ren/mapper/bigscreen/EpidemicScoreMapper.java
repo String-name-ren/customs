@@ -3,6 +3,8 @@ package com.leader.ren.mapper.bigscreen;
 import com.leader.ren.model.bigscreen.entity.EpidemicScore;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface EpidemicScoreMapper {
     int deleteByPrimaryKey(Long id);
@@ -16,4 +18,6 @@ public interface EpidemicScoreMapper {
     int updateByPrimaryKeySelective(EpidemicScore record);
 
     int updateByPrimaryKey(EpidemicScore record);
+
+    List<EpidemicScore> getScoreData();
 }

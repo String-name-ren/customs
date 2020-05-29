@@ -90,4 +90,14 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="getPieDataByType" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from epidemic_pie
+    where type = #{type,jdbcType=INTEGER}
+    order by id asc
+  </select>
+
+
 </mapper>

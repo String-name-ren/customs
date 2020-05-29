@@ -68,4 +68,13 @@
       rank = #{rank,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+
+  <select id="getScoreData" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from epidemic_score
+    order by id asc
+  </select>
+
 </mapper>
