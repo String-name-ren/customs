@@ -5,12 +5,14 @@
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="data_value" property="dataValue" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, data_value
+    id, name, data_value, type, remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from business_data
     where id = #{id,jdbcType=BIGINT}
@@ -20,10 +22,10 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.leader.ren.model.bigscreen.entity.BusinessData" >
-    insert into business_data (id, name, data_value
-      )
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{dataValue,jdbcType=VARCHAR}
-      )
+    insert into business_data (id, name, data_value,
+      type, remark)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{dataValue,jdbcType=VARCHAR},
+      #{type,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.leader.ren.model.bigscreen.entity.BusinessData" >
     insert into business_data
@@ -37,6 +39,12 @@
       <if test="dataValue != null" >
         data_value,
       </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -47,6 +55,12 @@
       </if>
       <if test="dataValue != null" >
         #{dataValue,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -59,21 +73,29 @@
       <if test="dataValue != null" >
         data_value = #{dataValue,jdbcType=VARCHAR},
       </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.leader.ren.model.bigscreen.entity.BusinessData" >
     update business_data
     set name = #{name,jdbcType=VARCHAR},
-      data_value = #{dataValue,jdbcType=VARCHAR}
+      data_value = #{dataValue,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-
-  <select id="getBusinessData" resultMap="BaseResultMap">
+  <select id="getBusinessData" resultMap="BaseResultMap" parameterType="java.lang.Integer">
     select
     <include refid="Base_Column_List" />
     from business_data
+    where type = #{type,jdbcType=INTEGER}
     order by id asc
   </select>
 </mapper>

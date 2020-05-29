@@ -19,5 +19,5 @@ public interface BusinessDataMapper {
 
     int updateByPrimaryKey(BusinessData record);
 
-    List<BusinessData> getBusinessData();
+    List<BusinessData> getBusinessData(Integer type);
 }

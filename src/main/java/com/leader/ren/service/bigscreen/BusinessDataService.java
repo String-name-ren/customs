@@ -21,18 +21,48 @@ public class BusinessDataService {
     private BusinessDataMapper businessDataMapper;
 
     public RestVo getBusinessData(){
-        List<BusinessData> list = businessDataMapper.getBusinessData();
 
-        List<Map<String,Object>> result = new ArrayList<>();
-        if(CommUtils.isNotNull(list)){
-            for(BusinessData businessData : list){
+        List<List<Map<String,Object>>> result = new ArrayList<>();
+
+
+        //2.6.2进口
+        List<Map<String,Object>> index1 = new ArrayList<>();
+        List<BusinessData> list1 = businessDataMapper.getBusinessData(2);
+        if(CommUtils.isNotNull(list1)){
+            for(BusinessData businessData : list1){
                 Map<String,Object> map = new HashMap<>();
                 map.put("name",businessData.getName());
                 map.put("value",businessData.getDataValue());
-                result.add(map);
+                index1.add(map);
             }
         }
-        //右边第二个
+        //2.6.2出口
+        List<Map<String,Object>> index2 = new ArrayList<>();
+        List<BusinessData> list2 = businessDataMapper.getBusinessData(2);
+        if(CommUtils.isNotNull(list2)){
+            for(BusinessData businessData : list2){
+                Map<String,Object> map = new HashMap<>();
+                map.put("name",businessData.getName());
+                map.put("value",businessData.getDataValue());
+                index2.add(map);
+            }
+        }
+
+        //2.8
+        List<Map<String,Object>> index0 = new ArrayList<>();
+        List<BusinessData> list0 = businessDataMapper.getBusinessData(1);
+        if(CommUtils.isNotNull(list0)){
+            for(BusinessData businessData : list0){
+                Map<String,Object> map = new HashMap<>();
+                map.put("name",businessData.getName());
+                map.put("value",businessData.getDataValue());
+                index0.add(map);
+            }
+        }
+
+        result.add(index1);
+        result.add(index2);
+        result.add(index0);
         return RestVo.SUCCESS(result);
     }
 

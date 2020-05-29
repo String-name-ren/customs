@@ -38,7 +38,7 @@ public class CustomsClearanceTimeService {
 
         //底部第一个
         result.put("title",title);
-        result.put("data",data);
+        result.put("echarts3",data);
         return RestVo.SUCCESS(result);
     }
 

@@ -10,4 +10,7 @@ public class BusinessData {
 
     private String dataValue;
 
+    private Integer type;
+
+    private String remark;
 }

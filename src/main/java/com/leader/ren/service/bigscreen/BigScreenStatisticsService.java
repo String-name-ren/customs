@@ -40,6 +40,8 @@ public class BigScreenStatisticsService {
 
         List<String> bottom4 = new ArrayList<>();
 
+        List<String> right2 = new ArrayList<>();
+
         if(CommUtils.isNotNull(list)){
             for(BigScreenStatistics statistics : list){
                 title.add(statistics.getMonth());
@@ -51,24 +53,27 @@ public class BigScreenStatisticsService {
                 bottom31.add(statistics.getPlaneInTotal());
                 bottom32.add(statistics.getPlaneOutTotal());
                 bottom4.add(statistics.getExpressIn());
+                right2.add(statistics.getClueTotal());
             }
         }
 
 
         result.put("title",title);
-        //左一显示
-        result.put("data1",data1);
-        result.put("data2",data2);
-        result.put("data3",data3);
-        //左二显示
-        result.put("left2",left2);
-        //底二显示
-        result.put("bottom2",bottom2);
-        //底三显示
-        result.put("bottom31",bottom31);
-        result.put("bottom32",bottom32);
-        //底四显示
-        result.put("bottom4",bottom4);
+        //1
+        result.put("echarts11",data1);
+        result.put("echarts12",data2);
+        result.put("echarts13",data3);
+        //2
+        result.put("echarts2",left2);
+        //4
+        result.put("echarts4",bottom2);
+        //5
+        result.put("echarts51",bottom31);
+        result.put("echarts52",bottom32);
+//        //8
+//        result.put("echarts8",bottom4);
+        //7
+        result.put("echarts7",right2);
         return RestVo.SUCCESS(result);
     }
 
