@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.leader.ren.mapper.bigscreen.EpidemicSampleMapper" >
+  <resultMap id="BaseResultMap" type="com.leader.ren.model.bigscreen.entity.EpidemicSample" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="date1" property="date1" jdbcType="VARCHAR" />
+    <result column="sample_count" property="sampleCount" jdbcType="VARCHAR" />
+    <result column="date2" property="date2" jdbcType="VARCHAR" />
+    <result column="sample_rate" property="sampleRate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, date1, sample_count, date2, sample_rate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from epidemic_sample
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from epidemic_sample
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.leader.ren.model.bigscreen.entity.EpidemicSample" >
+    insert into epidemic_sample (id, date1, sample_count, 
+      date2, sample_rate)
+    values (#{id,jdbcType=BIGINT}, #{date1,jdbcType=VARCHAR}, #{sampleCount,jdbcType=VARCHAR}, 
+      #{date2,jdbcType=VARCHAR}, #{sampleRate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.leader.ren.model.bigscreen.entity.EpidemicSample" >
+    insert into epidemic_sample
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="date1 != null" >
+        date1,
+      </if>
+      <if test="sampleCount != null" >
+        sample_count,
+      </if>
+      <if test="date2 != null" >
+        date2,
+      </if>
+      <if test="sampleRate != null" >
+        sample_rate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="date1 != null" >
+        #{date1,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleCount != null" >
+        #{sampleCount,jdbcType=VARCHAR},
+      </if>
+      <if test="date2 != null" >
+        #{date2,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleRate != null" >
+        #{sampleRate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leader.ren.model.bigscreen.entity.EpidemicSample" >
+    update epidemic_sample
+    <set >
+      <if test="date1 != null" >
+        date1 = #{date1,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleCount != null" >
+        sample_count = #{sampleCount,jdbcType=VARCHAR},
+      </if>
+      <if test="date2 != null" >
+        date2 = #{date2,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleRate != null" >
+        sample_rate = #{sampleRate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leader.ren.model.bigscreen.entity.EpidemicSample" >
+    update epidemic_sample
+    set date1 = #{date1,jdbcType=VARCHAR},
+      sample_count = #{sampleCount,jdbcType=VARCHAR},
+      date2 = #{date2,jdbcType=VARCHAR},
+      sample_rate = #{sampleRate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

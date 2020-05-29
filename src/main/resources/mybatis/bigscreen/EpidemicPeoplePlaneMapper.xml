@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.leader.ren.mapper.bigscreen.EpidemicPeoplePlaneMapper" >
+  <resultMap id="BaseResultMap" type="com.leader.ren.model.bigscreen.entity.EpidemicPeoplePlane" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="record_date" property="recordDate" jdbcType="VARCHAR" />
+    <result column="people_in" property="peopleIn" jdbcType="VARCHAR" />
+    <result column="people_out" property="peopleOut" jdbcType="VARCHAR" />
+    <result column="plane_in" property="planeIn" jdbcType="VARCHAR" />
+    <result column="plane_out" property="planeOut" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, record_date, people_in, people_out, plane_in, plane_out
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from epidemic_people_plane
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from epidemic_people_plane
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.leader.ren.model.bigscreen.entity.EpidemicPeoplePlane" >
+    insert into epidemic_people_plane (id, record_date, people_in, 
+      people_out, plane_in, plane_out
+      )
+    values (#{id,jdbcType=BIGINT}, #{recordDate,jdbcType=VARCHAR}, #{peopleIn,jdbcType=VARCHAR}, 
+      #{peopleOut,jdbcType=VARCHAR}, #{planeIn,jdbcType=VARCHAR}, #{planeOut,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.leader.ren.model.bigscreen.entity.EpidemicPeoplePlane" >
+    insert into epidemic_people_plane
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="recordDate != null" >
+        record_date,
+      </if>
+      <if test="peopleIn != null" >
+        people_in,
+      </if>
+      <if test="peopleOut != null" >
+        people_out,
+      </if>
+      <if test="planeIn != null" >
+        plane_in,
+      </if>
+      <if test="planeOut != null" >
+        plane_out,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="recordDate != null" >
+        #{recordDate,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleIn != null" >
+        #{peopleIn,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleOut != null" >
+        #{peopleOut,jdbcType=VARCHAR},
+      </if>
+      <if test="planeIn != null" >
+        #{planeIn,jdbcType=VARCHAR},
+      </if>
+      <if test="planeOut != null" >
+        #{planeOut,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leader.ren.model.bigscreen.entity.EpidemicPeoplePlane" >
+    update epidemic_people_plane
+    <set >
+      <if test="recordDate != null" >
+        record_date = #{recordDate,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleIn != null" >
+        people_in = #{peopleIn,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleOut != null" >
+        people_out = #{peopleOut,jdbcType=VARCHAR},
+      </if>
+      <if test="planeIn != null" >
+        plane_in = #{planeIn,jdbcType=VARCHAR},
+      </if>
+      <if test="planeOut != null" >
+        plane_out = #{planeOut,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leader.ren.model.bigscreen.entity.EpidemicPeoplePlane" >
+    update epidemic_people_plane
+    set record_date = #{recordDate,jdbcType=VARCHAR},
+      people_in = #{peopleIn,jdbcType=VARCHAR},
+      people_out = #{peopleOut,jdbcType=VARCHAR},
+      plane_in = #{planeIn,jdbcType=VARCHAR},
+      plane_out = #{planeOut,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
