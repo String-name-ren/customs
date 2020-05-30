@@ -38,7 +38,7 @@ public class BusinessDataService {
         }
         //2.6.2出口
         List<Map<String,Object>> index2 = new ArrayList<>();
-        List<BusinessData> list2 = businessDataMapper.getBusinessData(2);
+        List<BusinessData> list2 = businessDataMapper.getBusinessData(3);
         if(CommUtils.isNotNull(list2)){
             for(BusinessData businessData : list2){
                 Map<String,Object> map = new HashMap<>();
